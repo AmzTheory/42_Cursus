@@ -6,7 +6,7 @@
 /*   By: aalzubai <aalzubai@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/13 10:23:20 by aalzubai          #+#    #+#             */
-/*   Updated: 2022/12/13 18:35:18 by aalzubai         ###   ########.fr       */
+/*   Updated: 2023/01/02 15:19:57 by aalzubai         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,6 +43,7 @@ typedef struct s_config
 	int			space;
 	int			plus;
 	int			prec;
+	int			wid;
 	enum e_type	data_type;
 }	t_config;
 

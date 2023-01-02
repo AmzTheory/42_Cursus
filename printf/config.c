@@ -6,22 +6,26 @@
 /*   By: aalzubai <aalzubai@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/13 13:40:05 by aalzubai          #+#    #+#             */
-/*   Updated: 2022/12/13 18:36:39 by aalzubai         ###   ########.fr       */
+/*   Updated: 2023/01/02 15:25:20 by aalzubai         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "printf.h"
 
-static int	get_int(const char c)
+static const char	*skipdigits(const char *str)
 {
-	char	*st;
+	while (ft_isdigit(*(str)))
+	{
+		str++;
+	}
+	return (str - 1);
+}
+
+static int	get_int_val(const char *c)
+{
 	int		ret;
 
-	st = malloc(sizeof(char) + 1);
-	st[0] = c;
-	st[1] = '\0';
-	ret = ft_atoi(st);
-	free(st);
+	ret = ft_atoi(c);
 	return (ret);
 }
 
@@ -81,12 +85,20 @@ int	read_config(t_config *config, const char *str)
 			config->space = 1;
 		else if (*(str) == '+')
 			config->plus = 1;
+		else if (config->zero && ft_isdigit(*(str)))
+		{
+			config->wid = get_int_val(str);
+			str = skipdigits(str);
+		}
 		else if (*(str) == '.')
 		{
 			str++;
 			i++;
 			if (ft_isdigit(*(str)))
-				config->prec = get_int(*(str));
+			{
+				config->prec = get_int_val(str);
+				str = skipdigits(str);
+			}
 			else
 				str--;
 		}

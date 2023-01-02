@@ -6,7 +6,7 @@
 /*   By: aalzubai <aalzubai@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/13 10:32:12 by aalzubai          #+#    #+#             */
-/*   Updated: 2023/01/02 10:39:02 by aalzubai         ###   ########.fr       */
+/*   Updated: 2023/01/02 16:01:01 by aalzubai         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,8 +33,8 @@ int	handle_conversion(const char *str, va_list ap)
 
 	con = create_config();
 	count = read_config(con, str);
-	if (con->data_type == int_type)
-		return	()
+	// if (con->data_type == int_type)
+	// 	return	()
 	ft_putnbr_fd(va_arg(ap, int), 0);
 	return (count);
 }
@@ -68,10 +68,15 @@ int	ft_printf(const char *str, ...)
 
 int	main(void)
 {
-	// t_config *con = create_config();
-	// const char *str = "%%%";
-	// read_config(con, str);
-	// printf("zero: %i\ndash: %i\nhash: %i\nspace: %i\nplus:%i\nrec:%i\ntype:%i\n" ,con->zero, con->dash, con->hash, con->space,con->plus,con->prec, con->data_type);
-	ft_printf("%i- Ahmed %i- Saeed",1,2);
-	// printf("%%%");
+	t_config *con = create_config();
+	const char *str = "%#- +022.455i";
+	read_config(con, str);
+	printf("zero: %i\ndash: %i\nhash: %i\nspace: %i\nplus:%i\nprec:%i\nwid:%i\ntype:%i\n" ,con->zero, con->dash, con->hash, con->space,con->plus,con->prec, con->wid, con->data_type);
+	// ft_printf("%i- Ahmed %i- Saeed",1,2);
+	// float f = 755555.22;
+	// printf("%i\n",v);
+	// printf("%025.10f-Ahmed\n",f);
+	// printf("%+i\n",v);
+	// printf("% i\n",v);
+	// printf("%0i\n",v);
 }
