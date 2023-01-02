@@ -6,7 +6,7 @@
 /*   By: aalzubai <aalzubai@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/13 10:23:20 by aalzubai          #+#    #+#             */
-/*   Updated: 2023/01/02 15:19:57 by aalzubai         ###   ########.fr       */
+/*   Updated: 2023/01/02 16:54:30 by aalzubai         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,4 +49,5 @@ typedef struct s_config
 
 t_config	*create_config(void);
 int			read_config(t_config *config, const char *str);
+char		*getpre(t_config *con, int cur_len, int len);
 #endif

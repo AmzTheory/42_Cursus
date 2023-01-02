@@ -6,7 +6,7 @@
 /*   By: aalzubai <aalzubai@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/13 10:32:12 by aalzubai          #+#    #+#             */
-/*   Updated: 2023/01/02 16:01:01 by aalzubai         ###   ########.fr       */
+/*   Updated: 2023/01/02 16:57:57 by aalzubai         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -69,12 +69,12 @@ int	ft_printf(const char *str, ...)
 int	main(void)
 {
 	t_config *con = create_config();
-	const char *str = "%#- +022.455i";
+	const char *str = "%-6i";
 	read_config(con, str);
 	printf("zero: %i\ndash: %i\nhash: %i\nspace: %i\nplus:%i\nprec:%i\nwid:%i\ntype:%i\n" ,con->zero, con->dash, con->hash, con->space,con->plus,con->prec, con->wid, con->data_type);
 	// ft_printf("%i- Ahmed %i- Saeed",1,2);
-	// float f = 755555.22;
-	// printf("%i\n",v);
+	// int v = 2;
+	printf("%s---",getpre(con, 4, 6));
 	// printf("%025.10f-Ahmed\n",f);
 	// printf("%+i\n",v);
 	// printf("% i\n",v);
