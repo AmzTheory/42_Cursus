@@ -6,18 +6,20 @@
 /*   By: aalzubai <aalzubai@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/13 13:40:05 by aalzubai          #+#    #+#             */
-/*   Updated: 2023/01/02 15:25:20 by aalzubai         ###   ########.fr       */
+/*   Updated: 2023/01/04 17:48:35 by aalzubai         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "printf.h"
 
-static const char	*skipdigits(const char *str)
+static const char	*skipdigits(const char *str, int *i)
 {
 	while (ft_isdigit(*(str)))
 	{
 		str++;
+		*i = *i + 1;
 	}
+	*i = *i - 1;
 	return (str - 1);
 }
 
@@ -85,10 +87,10 @@ int	read_config(t_config *config, const char *str)
 			config->space = 1;
 		else if (*(str) == '+')
 			config->plus = 1;
-		else if (config->zero && ft_isdigit(*(str)))
+		else if (ft_isdigit(*(str)))
 		{
 			config->wid = get_int_val(str);
-			str = skipdigits(str);
+			str = skipdigits(str, &i);
 		}
 		else if (*(str) == '.')
 		{
@@ -97,7 +99,7 @@ int	read_config(t_config *config, const char *str)
 			if (ft_isdigit(*(str)))
 			{
 				config->prec = get_int_val(str);
-				str = skipdigits(str);
+				str = skipdigits(str, &i);
 			}
 			else
 				str--;

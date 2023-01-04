@@ -6,7 +6,7 @@
 /*   By: aalzubai <aalzubai@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/13 10:23:20 by aalzubai          #+#    #+#             */
-/*   Updated: 2023/01/02 16:54:30 by aalzubai         ###   ########.fr       */
+/*   Updated: 2023/01/04 16:57:01 by aalzubai         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,5 +49,6 @@ typedef struct s_config
 
 t_config	*create_config(void);
 int			read_config(t_config *config, const char *str);
-char		*getpre(t_config *con, int cur_len, int len);
+int			handle_int(va_list	ap, t_config *con);
+int			put_str(char *str);
 #endif
