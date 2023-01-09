@@ -1,17 +1,17 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   printf.h                                           :+:      :+:    :+:   */
+/*   ft_printf.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: aalzubai <aalzubai@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/13 10:23:20 by aalzubai          #+#    #+#             */
-/*   Updated: 2023/01/04 16:57:01 by aalzubai         ###   ########.fr       */
+/*   Updated: 2023/01/09 16:21:00 by aalzubai         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef PRINTF_H
-# define PRINTF_H
+#ifndef FT_PRINTF_H
+# define FT_PRINTF_H
 
 # include <stdio.h>
 # include <string.h>
@@ -47,8 +47,13 @@ typedef struct s_config
 	enum e_type	data_type;
 }	t_config;
 
+int			ft_printf(const char *str, ...);
 t_config	*create_config(void);
 int			read_config(t_config *config, const char *str);
 int			handle_int(va_list	ap, t_config *con);
+int			handle_string(va_list	ap, t_config *con);
+int			handle_char(va_list	ap, t_config *con);
 int			put_str(char *str);
+char		*getpre(t_config *con, int cur_len);
+char		*getsuf(t_config *con, int cur_len);
 #endif

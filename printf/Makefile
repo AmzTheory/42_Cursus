@@ -9,8 +9,7 @@
 CC			= gcc
 
 # define any compile-time flags
-CFLAGS		= -Wall -Wextra -Werror -g
-
+# CFLAGS		= -Wall -Wextra -Werror -g
 # define any directories containing header files other than /usr/include
 #
 libft_DIR 		= libft/
@@ -35,7 +34,7 @@ LIB1 			= ranlib
 RM				= rm -f
 
 # define the C source files
-SRCS = printf.c config.c conversion.c utils.c
+SRCS = ft_printf.c config.c utils.c char_conv.c int_conv.c str_conv.c
 
 # define the C object files
 #
@@ -49,7 +48,7 @@ OBJS = $(SRCS:.c=.o)
 
 # define the executable file
 # NAME = libftprintf.a
-NAME = libftprintf
+NAME = libftprintf.a
 
 # define any libraries to link into executable:
 #   if I want to link in libraries (libx.so or libx.a) I use the -llibname
@@ -65,16 +64,16 @@ LIBS = -lft
 
 all: $(NAME)
 
-# $(NAME): $(OBJS) $(LIBFT)
-# 				 $(LIB) $(NAME) $(OBJS)
-# 				 $(LIB1) $(NAME)
 $(NAME): $(OBJS) $(LIBFT)
-					@echo  Simple compiler named libfprint has been compiled
-					$(CC) $(CFLAGS) $(INCS) -o $(NAME) $(OBJS) $(LFLAGS) $(LIBS)
+				 $(LIB) $(NAME) $(OBJS)
+				 $(LIB1) $(NAME)
+# $(NAME): $(OBJS) $(LIBFT)
+# 					@echo  Simple compiler named libfprint has been compiled
+# 					$(CC) $(CFLAGS) $(INCS) -o $(NAME) $(OBJS) $(LFLAGS) $(LIBS)
 
-debug: $(OBJS) $(LIBFT)
-					@echo  Simple debuger named libfprint has been compiled
-					$(CC) $(CFLAGS) $(INCS)  -o $(NAME) $(OBJS) $(LFLAGS) $(LIBS)
+# debug: $(OBJS) $(LIBFT)
+# 					@echo  Simple debuger named libfprint has been compiled
+# 					$(CC) $(CFLAGS) $(INCS)  -o $(NAME) $(OBJS) $(LFLAGS) $(LIBS)
 # this is a suffix replacement rule for building .o's from .c's
 # it uses automatic variables $<: the name of the prerequisite of
 # the rule(a .c file) and $@: the name of the target of the rule (a .o file)
@@ -85,6 +84,7 @@ debug: $(OBJS) $(LIBFT)
 $(LIBFT):
 		@echo  libft make
 		make -C $(libft_DIR)
+		cp $(LIBFT) $(NAME)
 
 clean:
 		make clean -C $(libft_DIR)

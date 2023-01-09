@@ -6,11 +6,11 @@
 /*   By: aalzubai <aalzubai@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/13 18:03:31 by aalzubai          #+#    #+#             */
-/*   Updated: 2023/01/04 16:57:18 by aalzubai         ###   ########.fr       */
+/*   Updated: 2023/01/09 16:19:24 by aalzubai         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "printf.h"
+#include "ft_printf.h"
 
 int	put_str(char *str)
 {
@@ -24,4 +24,60 @@ int	put_str(char *str)
 		str++;
 	}
 	return (c);
+}
+
+char	*getpre(t_config *con, int cur_len)
+{
+	int		i;
+	char	pad;
+	char	*str;
+	int		rem_len;
+
+	pad = ' ';
+	str = ft_strdup("");
+	if (con->zero && !con->dash)
+		pad = '0';
+	rem_len = con->wid - cur_len;
+	if (con->dash == 0 && rem_len > 0)
+	{
+		str = malloc(rem_len + 1);
+		if (!str)
+			return (NULL);
+		i = 0;
+		while (i < rem_len)
+		{
+			str[i] = pad;
+			i++;
+		}
+		str[i] = '\0';
+	}
+	return (str);
+}
+char	*getsuf(t_config *con, int cur_len)
+{
+	int		i;
+	char	pad;
+	char	*str;
+	int		rem_len;
+
+
+	pad = ' ';
+	str = ft_strdup("");
+	if (con->zero && !con->dash)
+		pad = '0';
+	rem_len = con->wid - cur_len;
+	if (con->dash && rem_len > 0)
+	{
+		str = malloc(rem_len + 1);
+		if (!str)
+			return (NULL);
+		i = 0;
+		while (i < rem_len)
+		{
+			str[i] = pad;
+			i++;
+		}
+		str[i] = '\0';
+	}
+	return (str);
 }

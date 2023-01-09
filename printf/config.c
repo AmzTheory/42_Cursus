@@ -6,11 +6,11 @@
 /*   By: aalzubai <aalzubai@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/13 13:40:05 by aalzubai          #+#    #+#             */
-/*   Updated: 2023/01/04 17:48:35 by aalzubai         ###   ########.fr       */
+/*   Updated: 2023/01/09 16:18:59 by aalzubai         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "printf.h"
+#include "ft_printf.h"
 
 static const char	*skipdigits(const char *str, int *i)
 {
