@@ -6,7 +6,7 @@
 /*   By: aalzubai <aalzubai@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/13 18:03:31 by aalzubai          #+#    #+#             */
-/*   Updated: 2023/01/09 16:19:24 by aalzubai         ###   ########.fr       */
+/*   Updated: 2023/01/10 16:53:32 by aalzubai         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,7 +34,6 @@ char	*getpre(t_config *con, int cur_len)
 	int		rem_len;
 
 	pad = ' ';
-	str = ft_strdup("");
 	if (con->zero && !con->dash)
 		pad = '0';
 	rem_len = con->wid - cur_len;
@@ -51,8 +50,11 @@ char	*getpre(t_config *con, int cur_len)
 		}
 		str[i] = '\0';
 	}
+	else
+		str = ft_strdup("");
 	return (str);
 }
+
 char	*getsuf(t_config *con, int cur_len)
 {
 	int		i;
@@ -60,9 +62,7 @@ char	*getsuf(t_config *con, int cur_len)
 	char	*str;
 	int		rem_len;
 
-
 	pad = ' ';
-	str = ft_strdup("");
 	if (con->zero && !con->dash)
 		pad = '0';
 	rem_len = con->wid - cur_len;
@@ -79,5 +79,7 @@ char	*getsuf(t_config *con, int cur_len)
 		}
 		str[i] = '\0';
 	}
+	else
+		str = ft_strdup("");
 	return (str);
 }

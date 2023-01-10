@@ -6,7 +6,7 @@
 /*   By: aalzubai <aalzubai@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/13 10:32:12 by aalzubai          #+#    #+#             */
-/*   Updated: 2023/01/09 17:28:59 by aalzubai         ###   ########.fr       */
+/*   Updated: 2023/01/10 17:00:49 by aalzubai         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,13 +33,17 @@ int	handle_conversion(const char *str, va_list ap, int *count)
 
 	con = create_config();
 	c = read_config(con, str);
-	if (con->data_type == int_type)
+	if (con->data_type == i_type)
 		*count += handle_int(ap, con);
+	else if (con->data_type == d_type)
+		*count += handle_int(ap, con);
+	else if (con->data_type == u_type)
+		*count += handle_unsignedint(ap, con);
 	else if (con->data_type == str_type)
 		*count += handle_string(ap, con);
 	else if (con->data_type == char_type)
 		*count += handle_char(ap, con);
-	// ft_putnbr_fd(va_arg(ap, int), 0);
+	free(con);
 	return (c);
 }
 
@@ -69,15 +73,19 @@ int	ft_printf(const char *str, ...)
 	return (out_count);
 }
 
-// int	main(void)
-// {
+int	main(void)
+{
 	// t_config *con = create_config();
 	// const char *str = "%5s";
 	// read_config(con, str);
-	// printf("zero: %i\ndash: %i\nhash: %i\nspace: %i\nplus:%i\nprec:%i\nwid:%i\ntype:%i\n" ,con->zero, con->dash, con->hash, con->space,con->plus,con->prec, con->wid, con->data_type);
+	// printf("zero: %i\ndash: %i\nhash: %i\nspace: %i\nplus:
+	// %i\nprec:%i\nwid:%i\ntype:%i\n" ,
+	// con->zero, con->dash, con->hash, con->space,con->plus
+	// ,con->prec, con->wid, con->data_type);
 	// int v = 22;
 	// printf("\n%i\n",ft_printf("%-5c-%-10c",'A','B'));
-	// printf("%6c",'A');
+	// printf("\n len = %i\n",ft_printf("%"));
+	printf("\n len = %i\n",printf("%%%"));
 	// test single int conversion with bonus
 	// printf("\n1: %i == %i\n", printf("%i",22), ft_printf("%i^", 22)-1);
 	// printf("\n2: %i == %i\n", printf("%i",-22), ft_printf("%i^", -22)-1);
@@ -101,4 +109,4 @@ int	ft_printf(const char *str, ...)
 	// printf("%-5i--\n",v);
 	// printf("% i\n",v);
 	// printf("%0i\n",v);
-// }
+}

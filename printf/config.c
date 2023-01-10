@@ -6,7 +6,7 @@
 /*   By: aalzubai <aalzubai@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/13 13:40:05 by aalzubai          #+#    #+#             */
-/*   Updated: 2023/01/09 16:18:59 by aalzubai         ###   ########.fr       */
+/*   Updated: 2023/01/10 15:55:58 by aalzubai         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,7 +44,7 @@ t_config	*create_config(void)
 	config->space = 0;
 	config->plus = 0;
 	config->prec = 0;
-	config->data_type = int_type;
+	config->data_type = i_type;
 	return (config);
 }
 // %[-|0|#|+| ].dl
@@ -58,11 +58,11 @@ int	read_type(const char c)
 	else if (c == 'p')
 		return (ptr_type);
 	else if (c == 'd')
-		return (dec_type);
+		return (d_type);
 	else if (c == 'i')
-		return (int_type);
+		return (i_type);
 	else if (c == 'u')
-		return (undec_type);
+		return (u_type);
 	else if (c == 'x')
 		return (lowerhex_type);
 	else if (c == 'X')

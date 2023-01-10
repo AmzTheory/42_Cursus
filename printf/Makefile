@@ -9,7 +9,7 @@
 CC			= gcc
 
 # define any compile-time flags
-# CFLAGS		= -Wall -Wextra -Werror -g
+CFLAGS		= -Wall -Wextra -Werror -g
 # define any directories containing header files other than /usr/include
 #
 libft_DIR 		= libft/
@@ -34,8 +34,7 @@ LIB1 			= ranlib
 RM				= rm -f
 
 # define the C source files
-SRCS = ft_printf.c config.c utils.c char_conv.c int_conv.c str_conv.c
-
+SRCS = ft_printf.c config.c utils.c ft_uitoa.c char_conv.c int_conv.c str_conv.c unsigned_conv.c
 # define the C object files
 #
 # This uses Suffix Replacement within a macro:
@@ -67,9 +66,9 @@ all: $(NAME)
 $(NAME): $(OBJS) $(LIBFT)
 				 $(LIB) $(NAME) $(OBJS)
 				 $(LIB1) $(NAME)
-# $(NAME): $(OBJS) $(LIBFT)
-# 					@echo  Simple compiler named libfprint has been compiled
-# 					$(CC) $(CFLAGS) $(INCS) -o $(NAME) $(OBJS) $(LFLAGS) $(LIBS)
+exe: $(OBJS) $(LIBFT)
+					@echo  Simple compiler named libfprint has been compiled
+					$(CC) $(CFLAGS) $(INCS) -o $(NAME) $(OBJS) $(LFLAGS) $(LIBS)
 
 # debug: $(OBJS) $(LIBFT)
 # 					@echo  Simple debuger named libfprint has been compiled
