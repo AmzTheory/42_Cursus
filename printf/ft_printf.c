@@ -6,7 +6,7 @@
 /*   By: aalzubai <aalzubai@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/13 10:32:12 by aalzubai          #+#    #+#             */
-/*   Updated: 2023/01/10 17:00:49 by aalzubai         ###   ########.fr       */
+/*   Updated: 2023/01/11 11:40:43 by aalzubai         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,6 +26,14 @@ int	count_params(const char *str)
 	return (i);
 }
 
+int	handle_percent()
+{
+	char	*c;
+
+	c = "%";
+	return (put_str(c));
+}
+
 int	handle_conversion(const char *str, va_list ap, int *count)
 {
 	t_config	*con;
@@ -43,6 +51,14 @@ int	handle_conversion(const char *str, va_list ap, int *count)
 		*count += handle_string(ap, con);
 	else if (con->data_type == char_type)
 		*count += handle_char(ap, con);
+	else if (con->data_type == perce_type)
+		*count += handle_percent();
+	else if (con->data_type == lowerhex_type)
+		*count += handle_hex(ap, con, 'a');
+	else if (con->data_type == upperhex_type)
+		*count += handle_hex(ap, con, 'A');
+	else if (con->data_type == ptr_type)
+		*count += handle_ptr(ap, con);
 	free(con);
 	return (c);
 }
@@ -85,7 +101,9 @@ int	main(void)
 	// int v = 22;
 	// printf("\n%i\n",ft_printf("%-5c-%-10c",'A','B'));
 	// printf("\n len = %i\n",ft_printf("%"));
-	printf("\n len = %i\n",printf("%%%"));
+	char *str = "Ahmed";
+	printf("\n len = %i\n",ft_printf("%p",str));
+	printf("\n len = %i\n",printf("%p",str));
 	// test single int conversion with bonus
 	// printf("\n1: %i == %i\n", printf("%i",22), ft_printf("%i^", 22)-1);
 	// printf("\n2: %i == %i\n", printf("%i",-22), ft_printf("%i^", -22)-1);

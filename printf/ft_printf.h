@@ -6,7 +6,7 @@
 /*   By: aalzubai <aalzubai@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/13 10:23:20 by aalzubai          #+#    #+#             */
-/*   Updated: 2023/01/10 16:54:32 by aalzubai         ###   ########.fr       */
+/*   Updated: 2023/01/11 11:29:50 by aalzubai         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,6 +31,7 @@ enum e_type
 	u_type,
 	lowerhex_type,
 	upperhex_type,
+	perce_type,
 	unkown_type
 };
 
@@ -57,4 +58,6 @@ int			handle_unsignedint(va_list	ap, t_config *con);
 int			put_str(char *str);
 char		*getpre(t_config *con, int cur_len);
 char		*getsuf(t_config *con, int cur_len);
+int			handle_hex(va_list	ap, t_config *con, char start_char);
+int			handle_ptr(va_list	ap, t_config *con);
 #endif

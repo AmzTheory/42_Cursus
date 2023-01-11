@@ -6,7 +6,7 @@
 /*   By: aalzubai <aalzubai@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/13 13:40:05 by aalzubai          #+#    #+#             */
-/*   Updated: 2023/01/10 15:55:58 by aalzubai         ###   ########.fr       */
+/*   Updated: 2023/01/11 10:28:57 by aalzubai         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,6 +44,7 @@ t_config	*create_config(void)
 	config->space = 0;
 	config->plus = 0;
 	config->prec = 0;
+	config->wid = 0;
 	config->data_type = i_type;
 	return (config);
 }
@@ -67,6 +68,8 @@ int	read_type(const char c)
 		return (lowerhex_type);
 	else if (c == 'X')
 		return (upperhex_type);
+	else if (c == '%')
+		return (perce_type);
 	return (unkown_type);
 }
 
@@ -74,8 +77,9 @@ int	read_config(t_config *config, const char *str)
 {
 	int	i;
 
-	i = 0;
-	while (!ft_isalpha(*(str)))
+	i = 1;
+	str = str + 1;
+	while (!ft_isalpha(*(str)) && *(str) != '%')
 	{
 		if (*(str) == '0')
 			config->zero = 1;
