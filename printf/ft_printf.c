@@ -6,7 +6,7 @@
 /*   By: aalzubai <aalzubai@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/13 10:32:12 by aalzubai          #+#    #+#             */
-/*   Updated: 2023/01/11 11:40:43 by aalzubai         ###   ########.fr       */
+/*   Updated: 2023/01/11 12:22:05 by aalzubai         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -88,9 +88,10 @@ int	ft_printf(const char *str, ...)
 	va_end(ap);
 	return (out_count);
 }
+// #include <limits.h>
 
-int	main(void)
-{
+// int	main(void)
+// {
 	// t_config *con = create_config();
 	// const char *str = "%5s";
 	// read_config(con, str);
@@ -101,9 +102,9 @@ int	main(void)
 	// int v = 22;
 	// printf("\n%i\n",ft_printf("%-5c-%-10c",'A','B'));
 	// printf("\n len = %i\n",ft_printf("%"));
-	char *str = "Ahmed";
-	printf("\n len = %i\n",ft_printf("%p",str));
-	printf("\n len = %i\n",printf("%p",str));
+	// char *str = "Ahmed";
+	// printf("\n len = %i\n",ft_printf("%p",0));
+	// printf("\n len = %i\n",printf("%p",(void *)0));
 	// test single int conversion with bonus
 	// printf("\n1: %i == %i\n", printf("%i",22), ft_printf("%i^", 22)-1);
 	// printf("\n2: %i == %i\n", printf("%i",-22), ft_printf("%i^", -22)-1);
@@ -127,4 +128,4 @@ int	main(void)
 	// printf("%-5i--\n",v);
 	// printf("% i\n",v);
 	// printf("%0i\n",v);
-}
+// }
