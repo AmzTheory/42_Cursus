@@ -6,7 +6,7 @@
 /*   By: aalzubai <aalzubai@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/13 10:23:20 by aalzubai          #+#    #+#             */
-/*   Updated: 2023/01/11 11:29:50 by aalzubai         ###   ########.fr       */
+/*   Updated: 2023/01/12 15:18:20 by aalzubai         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,6 +43,7 @@ typedef struct s_config
 	int			space;
 	int			plus;
 	int			prec;
+	int			precw;
 	int			wid;
 	enum e_type	data_type;
 }	t_config;
@@ -56,7 +57,9 @@ int			handle_string(va_list	ap, t_config *con);
 int			handle_char(va_list	ap, t_config *con);
 int			handle_unsignedint(va_list	ap, t_config *con);
 int			put_str(char *str);
+int			put_str_limit(char *str, size_t lim);
 char		*getpre(t_config *con, int cur_len);
+char		*getpre_pr(t_config *con, int cur_len);
 char		*getsuf(t_config *con, int cur_len);
 int			handle_hex(va_list	ap, t_config *con, char start_char);
 int			handle_ptr(va_list	ap, t_config *con);

@@ -6,7 +6,7 @@
 /*   By: aalzubai <aalzubai@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/13 10:32:12 by aalzubai          #+#    #+#             */
-/*   Updated: 2023/01/11 12:22:05 by aalzubai         ###   ########.fr       */
+/*   Updated: 2023/01/12 16:05:01 by aalzubai         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -102,9 +102,9 @@ int	ft_printf(const char *str, ...)
 	// int v = 22;
 	// printf("\n%i\n",ft_printf("%-5c-%-10c",'A','B'));
 	// printf("\n len = %i\n",ft_printf("%"));
-	// char *str = "Ahmed";
-	// printf("\n len = %i\n",ft_printf("%p",0));
-	// printf("\n len = %i\n",printf("%p",(void *)0));
+	// char *str = "-";
+	// printf("\n len = %i\n",ft_printf("%+07.5i",44));
+	// printf("\n len = %i\n",printf("%+07.5i",44));
 	// test single int conversion with bonus
 	// printf("\n1: %i == %i\n", printf("%i",22), ft_printf("%i^", 22)-1);
 	// printf("\n2: %i == %i\n", printf("%i",-22), ft_printf("%i^", -22)-1);

@@ -6,7 +6,7 @@
 /*   By: aalzubai <aalzubai@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/13 13:40:05 by aalzubai          #+#    #+#             */
-/*   Updated: 2023/01/11 10:28:57 by aalzubai         ###   ########.fr       */
+/*   Updated: 2023/01/12 14:37:22 by aalzubai         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,6 +45,7 @@ t_config	*create_config(void)
 	config->plus = 0;
 	config->prec = 0;
 	config->wid = 0;
+	config->precw = 0;
 	config->data_type = i_type;
 	return (config);
 }
@@ -100,13 +101,14 @@ int	read_config(t_config *config, const char *str)
 		{
 			str++;
 			i++;
+			config->prec = 1;
 			if (ft_isdigit(*(str)))
 			{
-				config->prec = get_int_val(str);
+				config->precw = get_int_val(str);
 				str = skipdigits(str, &i);
 			}
 			else
-				str--;
+				continue ;
 		}
 		i++;
 		str++;
