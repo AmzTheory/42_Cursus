@@ -6,7 +6,7 @@
 /*   By: aalzubai <aalzubai@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/13 10:32:12 by aalzubai          #+#    #+#             */
-/*   Updated: 2023/01/12 16:05:01 by aalzubai         ###   ########.fr       */
+/*   Updated: 2023/01/14 16:26:31 by aalzubai         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -89,43 +89,8 @@ int	ft_printf(const char *str, ...)
 	return (out_count);
 }
 // #include <limits.h>
-
-// int	main(void)
-// {
-	// t_config *con = create_config();
-	// const char *str = "%5s";
-	// read_config(con, str);
-	// printf("zero: %i\ndash: %i\nhash: %i\nspace: %i\nplus:
-	// %i\nprec:%i\nwid:%i\ntype:%i\n" ,
-	// con->zero, con->dash, con->hash, con->space,con->plus
-	// ,con->prec, con->wid, con->data_type);
-	// int v = 22;
-	// printf("\n%i\n",ft_printf("%-5c-%-10c",'A','B'));
-	// printf("\n len = %i\n",ft_printf("%"));
-	// char *str = "-";
-	// printf("\n len = %i\n",ft_printf("%+07.5i",44));
-	// printf("\n len = %i\n",printf("%+07.5i",44));
-	// test single int conversion with bonus
-	// printf("\n1: %i == %i\n", printf("%i",22), ft_printf("%i^", 22)-1);
-	// printf("\n2: %i == %i\n", printf("%i",-22), ft_printf("%i^", -22)-1);
-	// printf("\n3: %i == %i\n", printf("%+i",22), ft_printf("%+i^", 22)-1);
-	// printf("\n4: %i == %i\n", printf("%+i",-22), ft_printf("%+i^", -22)-1);
-	// printf("\n5: %i == %i\n", printf("%-5i",22), ft_printf("%-5i^", 22)-1);
-	// printf("\n6:%i == %i\n", printf("%-12i",-22), ft_printf("%-12i^", -22)-1);
-	// printf("\n7:%i == %i\n", printf("% 5i",22), ft_printf("% 5i^", 22)-1);
-	// printf("\n8:%i == %i\n", printf("%-+i",22), ft_printf("%-+i^", 22)-1);
-	// printf("\n7:%i == %i\n", printf("%05i",22), ft_printf("%05i^", 22)-1);
-	// printf("\n8:%i == %i\n", printf("%-+i",22), ft_printf("%-+i^", 22)-1);
-
-	//error cases
-	// printf("\n9:%i == %i\n", printf("%-0i",22), ft_printf("%-0i^", 22)-1);
-	// printf("%-6i^", 22);
-	// printf("\n9:%i == %i\n", printf("% 5i",22), ft_printf("% 5i^", 22)-1);
-	// printf("\n %i == %i", printf("%i = ",-22), ft_printf("%i", -22));
-	// int v = 2;
-	// printf("%s---",getsuf(con, 4));
-	// printf("%025.10f-Ahmed\n",f);
-	// printf("%-5i--\n",v);
-	// printf("% i\n",v);
-	// printf("%0i\n",v);
-// }
+int	main(void)
+{
+	// printf("\n len = %i\n",ft_printf("%015.0i", 0));
+	printf("\n len = %i\n",printf("%.5X", 44));
+}

@@ -6,7 +6,7 @@
 /*   By: aalzubai <aalzubai@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/13 18:03:31 by aalzubai          #+#    #+#             */
-/*   Updated: 2023/01/12 16:05:38 by aalzubai         ###   ########.fr       */
+/*   Updated: 2023/01/14 15:18:23 by aalzubai         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,17 +19,16 @@ int	put_str(char *str)
 	c = 0;
 	while (*(str) != '\0')
 	{
-		// if (*(str) == "-")
 		ft_putchar_fd(*(str), 1);
-		c++;
 		str++;
+		c++;
 	}
 	return (c);
 }
 
 int	put_str_limit(char *str, size_t lim)
 {
-	size_t i;
+	size_t	i;
 
 	i = 0;
 	while (*(str) != '\0' && i < lim)
@@ -79,7 +78,7 @@ char	*getpre_pr(t_config *con, int cur_len)
 
 	pad = '0';
 	rem_len = con->precw - cur_len;
-	if (con->dash == 0 && rem_len > 0)
+	if (rem_len > 0)
 	{
 		str = malloc(rem_len + 1);
 		if (!str)
