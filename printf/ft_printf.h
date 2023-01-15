@@ -49,6 +49,7 @@ typedef struct s_config
 }	t_config;
 
 char		*ft_uitoa(unsigned int n);
+char		*ft_dec_to_hex(unsigned long long int val, char start_char);
 int			ft_printf(const char *str, ...);
 t_config	*create_config(void);
 int			read_config(t_config *config, const char *str);
@@ -57,7 +58,6 @@ int			handle_string(va_list	ap, t_config *con);
 int			handle_char(va_list	ap, t_config *con);
 int			handle_unsignedint(va_list	ap, t_config *con);
 int			put_str(char *str);
-int			put_str_limit(char *str, size_t lim);
 char		*getpre(t_config *con, int cur_len);
 char		*getpre_pr(t_config *con, int cur_len);
 char		*getsuf(t_config *con, int cur_len);

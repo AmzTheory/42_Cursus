@@ -12,64 +12,22 @@
 
 #include "ft_printf.h"
 
-int	dec_to_hex_helper(unsigned long long int val)
-{
-	int	i;
-
-	i = 0;
-	while (val != 0)
-	{
-		val = val / 16;
-		i++;
-	}
-	return (i);
-}
-
-char	*dec_to_hex(unsigned long long int val, char start_char)
-{
-	int		hex_len;
-	char	*str;
-	int		j;
-	int		rem;
-
-	if (val == 0)
-		return (ft_strdup("0"));
-	hex_len = dec_to_hex_helper(val);
-	str = malloc(hex_len + 1);
-	if (!str)
-		return (NULL);
-	j = hex_len - 1;
-	while (j >= 0)
-	{
-		rem = val % 16;
-		if (rem < 10)
-			str[j] = 48 + rem;
-		else
-			str[j] = (start_char - 10) + rem;
-
-		val = val / 16;
-		j--;
-	}
-	str[hex_len] = '\0';
-	return (str);
-}
-
-static int	write_output(char *pre, char *suf, char *val, int ox)
+static int	write_output(char *pre, char *pre_r, char *suf, char *val, char *ox)
 {
 	int		count;
-	char	*temp;
 
 	count = 0;
 	if (ox)
 	{
-		temp = strdup("0x");
-		count += put_str(temp);
-		free(temp);
+		count += put_str(ox);
+		free(ox);
 	}
 	count += put_str(pre);
+	count += put_str(pre_r);
 	count += put_str(val);
 	count += put_str(suf);
 	free(pre);
+	free(pre_r);
 	free(val);
 	free(suf);
 	return (count);
@@ -80,12 +38,21 @@ int	handle_hex(va_list	ap, t_config *con, char start_char)
 	unsigned int				val;
 	char						*valstr;
 	int							cur_len;
+	char						*ox;
+	char						*pre_r;
 
+	ox = NULL;
 	val = va_arg(ap, unsigned int);
-	valstr = dec_to_hex(val, start_char);
+	if (con->hash && val != 0 && con->data_type == upperhex_type)
+		ox = ft_strdup("0X");
+	else if (con->hash && val != 0 && con->data_type == lowerhex_type)
+		ox = ft_strdup("0x");
+
+	valstr = ft_dec_to_hex(val, start_char);
 	cur_len = ft_strlen(valstr);
-	return (write_output(getpre(con, cur_len),
-			getsuf(con, cur_len), valstr, 0));
+	pre_r = getpre_pr(con, cur_len);
+	return (write_output(getpre(con, cur_len), pre_r,
+			getsuf(con, cur_len), valstr, ox));
 }
 
 int	handle_ptr(va_list	ap, t_config *con)
@@ -97,8 +64,8 @@ int	handle_ptr(va_list	ap, t_config *con)
 
 	val = va_arg(ap, void *);
 	val_u = (unsigned long long int) val;
-	valstr = dec_to_hex(val_u, 'a');
+	valstr = ft_dec_to_hex(val_u, 'a');
 	cur_len = ft_strlen(valstr);
-	return (write_output(getpre(con, cur_len),
-			getsuf(con, cur_len), valstr, 1));
+	return (write_output(getpre(con, cur_len), ft_strdup(""),
+			getsuf(con, cur_len), valstr, ft_strdup("0x")));
 }

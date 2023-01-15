@@ -89,8 +89,4 @@ int	ft_printf(const char *str, ...)
 	return (out_count);
 }
 // #include <limits.h>
-int	main(void)
-{
-	// printf("\n len = %i\n",ft_printf("%015.0i", 0));
-	printf("\n len = %i\n",printf("%.5X", 44));
-}
+

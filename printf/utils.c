@@ -26,20 +26,6 @@ int	put_str(char *str)
 	return (c);
 }
 
-int	put_str_limit(char *str, size_t lim)
-{
-	size_t	i;
-
-	i = 0;
-	while (*(str) != '\0' && i < lim)
-	{
-		ft_putchar_fd(*(str), 1);
-		i++;
-		str++;
-	}
-	return (i);
-}
-
 char	*getpre(t_config *con, int cur_len)
 {
 	int		i;
