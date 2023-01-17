@@ -41,9 +41,7 @@ int	handle_conversion(const char *str, va_list ap, int *count)
 
 	con = create_config();
 	c = read_config(con, str);
-	if (con->data_type == i_type)
-		*count += handle_int(ap, con);
-	else if (con->data_type == d_type)
+	if (con->data_type == i_type || con->data_type == d_type)
 		*count += handle_int(ap, con);
 	else if (con->data_type == u_type)
 		*count += handle_unsignedint(ap, con);
@@ -90,3 +88,9 @@ int	ft_printf(const char *str, ...)
 }
 // #include <limits.h>
 
+int main()
+{
+	int val = 55;
+	printf("len = %i \n", ft_printf("%#10.5x",val));
+	printf("len = %i \n", printf("%#10.5x",val));
+}
