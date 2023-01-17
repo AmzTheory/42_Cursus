@@ -6,7 +6,7 @@
 /*   By: aalzubai <aalzubai@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/09 15:36:22 by aalzubai          #+#    #+#             */
-/*   Updated: 2023/01/14 11:46:30 by aalzubai         ###   ########.fr       */
+/*   Updated: 2023/01/17 13:52:37 by aalzubai         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,13 +35,11 @@ static char	*reduce_str(char *val, int limit)
 	new_val = malloc(limit + 1);
 	if (!new_val)
 		return (NULL);
-
 	while (i < limit)
 	{
 		new_val[i] = val[i];
 		i++;
 	}
-
 	new_val[i] = '\0';
 	return (new_val);
 }

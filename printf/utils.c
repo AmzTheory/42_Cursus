@@ -6,7 +6,7 @@
 /*   By: aalzubai <aalzubai@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/13 18:03:31 by aalzubai          #+#    #+#             */
-/*   Updated: 2023/01/14 15:18:23 by aalzubai         ###   ########.fr       */
+/*   Updated: 2023/01/17 09:26:20 by aalzubai         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,6 +24,15 @@ int	put_str(char *str)
 		c++;
 	}
 	return (c);
+}
+
+int	write_suffix(char *suf)
+{
+	int	count;
+
+	count = put_str(suf);
+	free(suf);
+	return (count);
 }
 
 char	*getpre(t_config *con, int cur_len)

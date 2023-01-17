@@ -9,7 +9,7 @@
 CC			= gcc
 
 # define any compile-time flags
-CFLAGS		= -Wall -Wextra -Werror -g
+CFLAGS		= -Wall -Wextra -Werror
 # define any directories containing header files other than /usr/include
 #
 libft_DIR 		= libft/
@@ -34,7 +34,7 @@ LIB1 			= ranlib
 RM				= rm -f
 
 # define the C source files
-SRCS = ft_printf.c config.c utils.c conv_utils.c hex_conv.c char_conv.c int_conv.c str_conv.c unsigned_conv.c
+SRCS = ft_printf.c config.c utils.c conv_utils.c config_utils.c hex_conv.c char_conv.c int_conv.c str_conv.c unsigned_conv.c
 # define the C object files
 #
 # This uses Suffix Replacement within a macro:

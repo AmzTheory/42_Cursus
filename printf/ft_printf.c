@@ -6,7 +6,7 @@
 /*   By: aalzubai <aalzubai@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/13 10:32:12 by aalzubai          #+#    #+#             */
-/*   Updated: 2023/01/14 16:26:31 by aalzubai         ###   ########.fr       */
+/*   Updated: 2023/01/17 15:36:15 by aalzubai         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,7 @@ int	count_params(const char *str)
 	return (i);
 }
 
-int	handle_percent()
+int	handle_percent(void)
 {
 	char	*c;
 
@@ -86,11 +86,10 @@ int	ft_printf(const char *str, ...)
 	va_end(ap);
 	return (out_count);
 }
-// #include <limits.h>
-
-int main()
-{
-	int val = 55;
-	printf("len = %i \n", ft_printf("%#10.5x",val));
-	printf("len = %i \n", printf("%#10.5x",val));
-}
+// #include <stdio.h>
+// int main()
+// {
+// 	// unsigned int val = 0;
+// 	printf("len = %u \n", ft_printf("%.0X", 0));
+// 	printf("len = %u \n", printf("%.0X", 0));
+// }

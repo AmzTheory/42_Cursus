@@ -6,30 +6,11 @@
 /*   By: aalzubai <aalzubai@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/13 13:40:05 by aalzubai          #+#    #+#             */
-/*   Updated: 2023/01/12 14:37:22 by aalzubai         ###   ########.fr       */
+/*   Updated: 2023/01/17 12:05:12 by aalzubai         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
-
-static const char	*skipdigits(const char *str, int *i)
-{
-	while (ft_isdigit(*(str)))
-	{
-		str++;
-		*i = *i + 1;
-	}
-	*i = *i - 1;
-	return (str - 1);
-}
-
-static int	get_int_val(const char *c)
-{
-	int		ret;
-
-	ret = ft_atoi(c);
-	return (ret);
-}
 
 t_config	*create_config(void)
 {
@@ -49,7 +30,6 @@ t_config	*create_config(void)
 	config->data_type = i_type;
 	return (config);
 }
-// %[-|0|#|+| ].dl
 
 int	read_type(const char c)
 {
@@ -82,34 +62,8 @@ int	read_config(t_config *config, const char *str)
 	str = str + 1;
 	while (!ft_isalpha(*(str)) && *(str) != '%')
 	{
-		if (*(str) == '0')
-			config->zero = 1;
-		else if (*(str) == '#')
-			config->hash = 1;
-		else if (*(str) == '-')
-			config->dash = 1;
-		else if (*(str) == ' ')
-			config->space = 1;
-		else if (*(str) == '+')
-			config->plus = 1;
-		else if (ft_isdigit(*(str)))
-		{
-			config->wid = get_int_val(str);
-			str = skipdigits(str, &i);
-		}
-		else if (*(str) == '.')
-		{
-			str++;
-			i++;
-			config->prec = 1;
-			if (ft_isdigit(*(str)))
-			{
-				config->precw = get_int_val(str);
-				str = skipdigits(str, &i);
-			}
-			else
-				continue ;
-		}
+		if (!check_simple_flags(str, config))
+			str = check_complex_flags(str, config, &i);
 		i++;
 		str++;
 	}

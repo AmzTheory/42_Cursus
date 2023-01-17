@@ -6,7 +6,7 @@
 /*   By: aalzubai <aalzubai@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/09 15:34:52 by aalzubai          #+#    #+#             */
-/*   Updated: 2023/01/14 15:19:06 by aalzubai         ###   ########.fr       */
+/*   Updated: 2023/01/17 14:11:02 by aalzubai         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,7 @@ static char	*getsign(t_config *con, int val)
 	return (ft_strdup(""));
 }
 
-static int	write_output(char *pre, char *pre_c, char *suf, char *s, char *val)
+static int	write_output(char *pre, char *pre_c, char *s, char *val)
 {
 	int	count;
 
@@ -43,12 +43,10 @@ static int	write_output(char *pre, char *pre_c, char *suf, char *s, char *val)
 		count += put_str(val + 1);
 	else
 		count += put_str(val);
-	count += put_str(suf);
 	free(s);
 	free(pre);
 	free(pre_c);
 	free(val);
-	free(suf);
 	return (count);
 }
 
@@ -61,8 +59,6 @@ int	handle_int(va_list	ap, t_config *con)
 	char	*pre_r;
 
 	val = va_arg(ap, int);
-
-
 	s = getsign(con, val);
 	valstr = ft_itoa(val);
 	cur_len = ft_strlen(valstr);
@@ -73,9 +69,9 @@ int	handle_int(va_list	ap, t_config *con)
 	if (val == 0 && con->prec && !con->precw)
 	{
 		free(valstr);
-		valstr = strdup("");
+		valstr = ft_strdup("");
 		cur_len = 0;
 	}
 	return (write_output(getpre(con, cur_len), pre_r,
-			getsuf(con, cur_len), s, valstr));
+			s, valstr) + write_suffix(getsuf(con, cur_len)));
 }
