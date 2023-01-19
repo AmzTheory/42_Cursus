@@ -16,10 +16,15 @@ int	put_str(char *str)
 {
 	int	c;
 
+
 	c = 0;
+	if (!str)
+		return (-1);
 	while (*(str) != '\0')
 	{
-		ft_putchar_fd(*(str), 1);
+		// ft_putchar_fd(*(str), 1);
+		if (write(1, str, 1) == -1)
+			return (-1);
 		str++;
 		c++;
 	}
@@ -35,12 +40,19 @@ int	write_suffix(char *suf)
 	return (count);
 }
 
-char	*getpre(t_config *con, int cur_len)
+size_t	safe_strlen(char *str)
 {
-	int		i;
+	if (!str)
+		return (0);
+	return (ft_strlen(str));
+}
+
+char	*getpre(t_config *con, size_t cur_len)
+{
+	size_t	i;
 	char	pad;
 	char	*str;
-	int		rem_len;
+	size_t	rem_len;
 
 	pad = ' ';
 	if (con->zero && !con->dash && !con->prec)
@@ -64,12 +76,12 @@ char	*getpre(t_config *con, int cur_len)
 	return (str);
 }
 
-char	*getpre_pr(t_config *con, int cur_len)
+char	*getpre_pr(t_config *con, size_t cur_len)
 {
-	int		i;
+	size_t	i;
 	char	pad;
 	char	*str;
-	int		rem_len;
+	size_t		rem_len;
 
 	pad = '0';
 	rem_len = con->precw - cur_len;
@@ -91,12 +103,12 @@ char	*getpre_pr(t_config *con, int cur_len)
 	return (str);
 }
 
-char	*getsuf(t_config *con, int cur_len)
+char	*getsuf(t_config *con, size_t cur_len)
 {
-	int		i;
+	size_t	i;
 	char	pad;
 	char	*str;
-	int		rem_len;
+	size_t	rem_len;
 
 	pad = ' ';
 	if (con->zero && !con->dash)

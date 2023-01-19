@@ -15,6 +15,7 @@
 
 # include "libft/libft.h"
 # include <stdarg.h>
+#include <stdio.h>
 
 enum e_type
 {
@@ -53,12 +54,13 @@ int				handle_string(va_list	ap, t_config *con);
 int				handle_char(va_list	ap, t_config *con);
 int				handle_unsignedint(va_list	ap, t_config *con);
 int				put_str(char *str);
-char			*getpre(t_config *con, int cur_len);
-char			*getpre_pr(t_config *con, int cur_len);
-char			*getsuf(t_config *con, int cur_len);
+char			*getpre(t_config *con, size_t cur_len);
+char			*getpre_pr(t_config *con, size_t cur_len);
+char			*getsuf(t_config *con, size_t cur_len);
 int				handle_hex(va_list	ap, t_config *con, char start_char);
 int				handle_ptr(va_list	ap, t_config *con);
 int				write_suffix(char *suf);
 int				check_simple_flags(const char *str, t_config *config);
 const char		*check_complex_flags(const char *str, t_config *config, int *i);
+size_t			safe_strlen(char *str);
 #endif
